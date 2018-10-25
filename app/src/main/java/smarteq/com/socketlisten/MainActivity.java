@@ -1,6 +1,7 @@
 package smarteq.com.socketlisten;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
@@ -10,7 +11,6 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,47 +19,15 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 
-import java.io.BufferedReader;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.ServerSocket;
-import java.net.Socket;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, AdapterView.OnItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, AdapterView.OnItemSelectedListener, OnTCPMessageRecievedListener {
 
-    Server server;
-    Runnable myRunnable = new Runnable() {
-        @Override
-        public void run() {
-            try {
-                String clientSentence;
-                String capitalizedSentence;
-                ServerSocket welcomeSocket = new ServerSocket(8888);
-
-                while (true) {
-                    Socket connectionSocket = welcomeSocket.accept();
-                    BufferedReader inFromClient =
-                            new BufferedReader(new InputStreamReader(connectionSocket.getInputStream()));
-                    DataOutputStream outToClient = new DataOutputStream(connectionSocket.getOutputStream());
-
-                    clientSentence = inFromClient.readLine();
-
-                    System.out.println("Received: " + clientSentence);
-                    Log.wtf("Received", clientSentence);
-                    capitalizedSentence = clientSentence.toUpperCase() + '\n';
-                    outToClient.writeBytes(capitalizedSentence);
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    };
     private ArrayList<LinearLayout> layoutList = new ArrayList<>();
     private int totalKoltuk = 0;
     private LinearLayout layout1, layout2, layout3, layout4, layout5, layout6;
+    private Handler handler = new Handler();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -117,11 +85,33 @@ public class MainActivity extends AppCompatActivity
         spinner5.setOnItemSelectedListener(this);
         spinner6.setOnItemSelectedListener(this);
 
-        // Get a handler that can be used to post to the main thread
-        //Handler mainHandler = new Handler(Looper.getMainLooper());
-        //mainHandler.post(myRunnable);
+        TCPCommunicator writer = TCPCommunicator.getInstance();
+        TCPCommunicator.addListener(this);
+        writer.init(8888);
 
-        server = new Server(this);
+        /*Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                TCPCommunicator.writeToSocket(jsonReadyForSend);
+            }
+        });
+        thread.start();*/
+
+    }
+
+    @Override
+    public void onTCPMessageRecieved(String message) {
+        final String theMessage = message;
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    refreshSquares(theMessage);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
     @Override
@@ -172,34 +162,35 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void refreshSquares(String hamData) {
-        // dev1 BF96A5 3032 ..1.01......101..
+        // dev2 BF96A5 3032 ..1.01......101..
         String devName = hamData.split(" ")[0];
         int devNumber = Integer.parseInt(String.valueOf(devName.charAt(3)));
         int startPoint = (devNumber - 1) * 6;
         int endPoint = devNumber * 6;
-        int childs = 0;
         String byteData = hamData.split(" ")[3];
         byteData = byteData.replaceAll("\\.", "");
 
         if (!((devNumber - 1) * 6 <= totalKoltuk))
             return;
 
+        ArrayList<ImageView> imageViewList = new ArrayList<>();
+        for (int j = 0; j < layoutList.size(); j++) {
+            for (int i = 0; i < layoutList.get(j).getChildCount(); i++) {
+                imageViewList.add((ImageView) layoutList.get(j).getChildAt(i));
+            }
+        }
+
+        int j = startPoint;
         for (int i = 0; i < byteData.length(); i++) {
             String oneDigit = byteData.substring(i, i + 1);
-            for (int j = 0; j < layoutList.size(); j++) {
-                childs += layoutList.get(j).getChildCount();
-                if (childs > startPoint && childs <= endPoint) {
-                    for (int k = 0; k < childs; k++) {
-                        ImageView imageView = (ImageView) layoutList.get(j).getChildAt(k);
-                        if (oneDigit.equals("1")) {
-                            imageView.setImageResource(R.drawable.green_square);
-                        } else {
-                            imageView.setImageResource(R.drawable.red_square);
-                        }
-                    }
-                }
-                layoutList.get(j).requestLayout();
+            if (j == imageViewList.size())
+                break;
+            if (oneDigit.equals("1")) {
+                imageViewList.get(j).setImageResource(R.drawable.green_square);
+            } else {
+                imageViewList.get(j).setImageResource(R.drawable.red_square);
             }
+            j++;
         }
 
     }
@@ -207,12 +198,6 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
 
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        server.onDestroy();
     }
 
     public void onBackPressed() {
