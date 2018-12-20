@@ -24,6 +24,8 @@ import java.util.List;
 
 public class TCPCommunicator {
 
+    private final String TAG = "TCPCommunicator";
+
     private static TCPCommunicator uniqInstance;
     private static int serverPort;
     private static List<OnTCPMessageRecievedListener> allListeners;
@@ -53,7 +55,6 @@ public class TCPCommunicator {
             e.printStackTrace();
         }
         return TCPWriterErrors.OK;
-
     }
 
     public static void addListener(OnTCPMessageRecievedListener listener) {
@@ -69,7 +70,6 @@ public class TCPCommunicator {
     }
 
     public static void closeStreams() {
-        // TODO Auto-generated method stub
         try {
             s.close();
             ss.close();
@@ -85,20 +85,18 @@ public class TCPCommunicator {
         InitTCPServerTask task = new InitTCPServerTask();
         task.execute(new Void[0]);
         return TCPWriterErrors.OK;
-//		}
     }
 
     public enum TCPWriterErrors {UnknownHostException, IOException, otherProblem, OK}
 
     public class InitTCPServerTask extends AsyncTask<Void, Void, Void> {
+
         public InitTCPServerTask() {
 
         }
 
         @Override
         protected Void doInBackground(Void... params) {
-
-
             try {
                 ss = new ServerSocket(TCPCommunicator.getServerPort());
 
@@ -111,24 +109,21 @@ public class TCPCommunicator {
                 while ((incomingMsg = in.readLine()) != null) {
                     final String finalMessage = incomingMsg;
                     handler.post(new Runnable() {
-
                         @Override
                         public void run() {
-                            // TODO Auto-generated method stub
                             for (OnTCPMessageRecievedListener listener : allListeners)
                                 listener.onTCPMessageRecieved(finalMessage);
-                            Log.e("TCP", finalMessage);
+                            Log.wtf(TAG, finalMessage);
                         }
                     });
                 }
             } catch (IOException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
+
             return null;
-
-
         }
 
     }
+
 }
