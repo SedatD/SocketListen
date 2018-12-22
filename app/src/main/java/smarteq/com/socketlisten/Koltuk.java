@@ -1,6 +1,6 @@
 package smarteq.com.socketlisten;
 
-import android.widget.ImageButton;
+import android.widget.Button;
 
 /**
  * Created by SD
@@ -9,29 +9,23 @@ import android.widget.ImageButton;
 
 public class Koltuk {
 
-    private ImageButton imageButton;
+    private Button button;
     private boolean status;
-    private int renk;
     private int baseIndex;
     private int currentIndex;
 
-    public Koltuk(ImageButton imageButton, boolean status, int renk, int baseIndex, int currentIndex) {
-        this.imageButton = imageButton;
+    public Koltuk(Button button, boolean status, int baseIndex, int currentIndex) {
+        this.button = button;
         this.status = status;
-        this.renk = renk;
         this.baseIndex = baseIndex;
         this.currentIndex = currentIndex;
     }
 
-    public ImageButton getImageButton() {
-        return imageButton;
+    public Button getButton() {
+        return button;
     }
 
-    public void setImageButton(ImageButton imageButton) {
-        this.imageButton = imageButton;
-    }
-
-    public boolean isStatus() {
+    public boolean getStatus() {
         return status;
     }
 
@@ -39,21 +33,9 @@ public class Koltuk {
         this.status = status;
     }
 
-    public int getRenk() {
-        return renk;
-    }
-
-    public void setRenk(int renk) {
-        this.renk = renk;
-    }
-
-    /*public int getBaseIndex() {
+    public int getBaseIndex() {
         return baseIndex;
-    }*/
-
-    /*public void setBaseIndex(int baseIndex) {
-        this.baseIndex = baseIndex;
-    }*/
+    }
 
     public int getCurrentIndex() {
         return currentIndex;

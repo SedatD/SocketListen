@@ -20,52 +20,65 @@
             android:layout_gravity="center"
             android:orientation="horizontal">
 
-            <ImageButton
+            <Button
                 android:id="@+id/imageButton11"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
+                android:background="@color/colorYellow"
                 android:padding="2dp"
-                android:src="@drawable/green_square" />
+                android:text="1" />
 
-            <ImageButton
+
+            <Button
                 android:id="@+id/imageButton12"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginLeft="8dp"
+                android:background="@color/colorYellow"
                 android:padding="2dp"
-                android:src="@drawable/green_square" />
+                android:text="2" />
 
-            <ImageButton
+
+            <Button
                 android:id="@+id/imageButton13"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginLeft="8dp"
+                android:background="@color/colorYellow"
                 android:padding="2dp"
-                android:src="@drawable/green_square" />
+                android:text="3" />
 
-            <ImageButton
+
+            <Button
                 android:id="@+id/imageButton14"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginLeft="8dp"
+                android:background="@color/colorYellow"
                 android:padding="2dp"
-                android:src="@drawable/green_square" />
+                android:text="4" />
 
-            <ImageButton
+
+            <Button
                 android:id="@+id/imageButton15"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginLeft="8dp"
+                android:background="@color/colorYellow"
                 android:padding="2dp"
-                android:src="@drawable/green_square" />
+                android:text="5" />
 
-            <ImageButton
+
+            <Button
                 android:id="@+id/imageButton16"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginLeft="8dp"
+                android:background="@color/colorYellow"
                 android:padding="2dp"
-                android:src="@drawable/green_square" />
+                android:text="6" />
+
+
         </LinearLayout>
     </LinearLayout>
 
@@ -83,52 +96,65 @@
             android:layout_gravity="center"
             android:orientation="horizontal">
 
-            <ImageButton
+            <Button
                 android:id="@+id/imageButton21"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
+                android:background="@color/colorYellow"
                 android:padding="2dp"
-                android:src="@drawable/green_square" />
+                android:text="7" />
 
-            <ImageButton
+
+            <Button
                 android:id="@+id/imageButton22"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginLeft="8dp"
+                android:background="@color/colorYellow"
                 android:padding="2dp"
-                android:src="@drawable/green_square" />
+                android:text="8" />
 
-            <ImageButton
+
+            <Button
                 android:id="@+id/imageButton23"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginLeft="8dp"
+                android:background="@color/colorYellow"
                 android:padding="2dp"
-                android:src="@drawable/green_square" />
+                android:text="9" />
 
-            <ImageButton
+
+            <Button
                 android:id="@+id/imageButton24"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginLeft="8dp"
+                android:background="@color/colorYellow"
                 android:padding="2dp"
-                android:src="@drawable/green_square" />
+                android:text="10" />
 
-            <ImageButton
+
+            <Button
                 android:id="@+id/imageButton25"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginLeft="8dp"
+                android:background="@color/colorYellow"
                 android:padding="2dp"
-                android:src="@drawable/green_square" />
+                android:text="11" />
 
-            <ImageButton
+
+            <Button
                 android:id="@+id/imageButton26"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginLeft="8dp"
+                android:background="@color/colorYellow"
                 android:padding="2dp"
-                android:src="@drawable/green_square" />
+                android:text="12" />
+
+
         </LinearLayout>
     </LinearLayout>
 
@@ -146,52 +172,65 @@
             android:layout_gravity="center"
             android:orientation="horizontal">
 
-            <ImageButton
+            <Button
                 android:id="@+id/imageButton31"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
+                android:background="@color/colorYellow"
                 android:padding="2dp"
-                android:src="@drawable/green_square" />
+                android:text="13" />
 
-            <ImageButton
+
+            <Button
                 android:id="@+id/imageButton32"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginLeft="8dp"
+                android:background="@color/colorYellow"
                 android:padding="2dp"
-                android:src="@drawable/green_square" />
+                android:text="14" />
 
-            <ImageButton
+
+            <Button
                 android:id="@+id/imageButton33"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginLeft="8dp"
+                android:background="@color/colorYellow"
                 android:padding="2dp"
-                android:src="@drawable/green_square" />
+                android:text="15" />
 
-            <ImageButton
+
+            <Button
                 android:id="@+id/imageButton34"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginLeft="8dp"
+                android:background="@color/colorYellow"
                 android:padding="2dp"
-                android:src="@drawable/green_square" />
+                android:text="16" />
 
-            <ImageButton
+
+            <Button
                 android:id="@+id/imageButton35"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginLeft="8dp"
+                android:background="@color/colorYellow"
                 android:padding="2dp"
-                android:src="@drawable/green_square" />
+                android:text="17" />
 
-            <ImageButton
+
+            <Button
                 android:id="@+id/imageButton36"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginLeft="8dp"
+                android:background="@color/colorYellow"
                 android:padding="2dp"
-                android:src="@drawable/green_square" />
+                android:text="18" />
+
+
         </LinearLayout>
     </LinearLayout>
 
@@ -209,52 +248,65 @@
             android:layout_gravity="center"
             android:orientation="horizontal">
 
-            <ImageButton
+            <Button
                 android:id="@+id/imageButton41"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
+                android:background="@color/colorYellow"
                 android:padding="2dp"
-                android:src="@drawable/green_square" />
+                android:text="19" />
 
-            <ImageButton
+
+            <Button
                 android:id="@+id/imageButton42"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginLeft="8dp"
+                android:background="@color/colorYellow"
                 android:padding="2dp"
-                android:src="@drawable/green_square" />
+                android:text="20" />
 
-            <ImageButton
+
+            <Button
                 android:id="@+id/imageButton43"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginLeft="8dp"
+                android:background="@color/colorYellow"
                 android:padding="2dp"
-                android:src="@drawable/green_square" />
+                android:text="21" />
 
-            <ImageButton
+
+            <Button
                 android:id="@+id/imageButton44"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginLeft="8dp"
+                android:background="@color/colorYellow"
                 android:padding="2dp"
-                android:src="@drawable/green_square" />
+                android:text="22" />
 
-            <ImageButton
+
+            <Button
                 android:id="@+id/imageButton45"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginLeft="8dp"
+                android:background="@color/colorYellow"
                 android:padding="2dp"
-                android:src="@drawable/green_square" />
+                android:text="23" />
 
-            <ImageButton
+
+            <Button
                 android:id="@+id/imageButton46"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginLeft="8dp"
+                android:background="@color/colorYellow"
                 android:padding="2dp"
-                android:src="@drawable/green_square" />
+                android:text="24" />
+
+
         </LinearLayout>
     </LinearLayout>
 
@@ -272,52 +324,65 @@
             android:layout_gravity="center"
             android:orientation="horizontal">
 
-            <ImageButton
+            <Button
                 android:id="@+id/imageButton51"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
+                android:background="@color/colorYellow"
                 android:padding="2dp"
-                android:src="@drawable/green_square" />
+                android:text="25" />
 
-            <ImageButton
+
+            <Button
                 android:id="@+id/imageButton52"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginLeft="8dp"
+                android:background="@color/colorYellow"
                 android:padding="2dp"
-                android:src="@drawable/green_square" />
+                android:text="26" />
 
-            <ImageButton
+
+            <Button
                 android:id="@+id/imageButton53"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginLeft="8dp"
+                android:background="@color/colorYellow"
                 android:padding="2dp"
-                android:src="@drawable/green_square" />
+                android:text="27" />
 
-            <ImageButton
+
+            <Button
                 android:id="@+id/imageButton54"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginLeft="8dp"
+                android:background="@color/colorYellow"
                 android:padding="2dp"
-                android:src="@drawable/green_square" />
+                android:text="28" />
 
-            <ImageButton
+
+            <Button
                 android:id="@+id/imageButton55"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginLeft="8dp"
+                android:background="@color/colorYellow"
                 android:padding="2dp"
-                android:src="@drawable/green_square" />
+                android:text="29" />
 
-            <ImageButton
+
+            <Button
                 android:id="@+id/imageButton56"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginLeft="8dp"
+                android:background="@color/colorYellow"
                 android:padding="2dp"
-                android:src="@drawable/green_square" />
+                android:text="30" />
+
+
         </LinearLayout>
     </LinearLayout>
 
@@ -335,53 +400,74 @@
             android:layout_gravity="center"
             android:orientation="horizontal">
 
-            <ImageButton
+            <Button
                 android:id="@+id/imageButton61"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
+                android:background="@color/colorYellow"
                 android:padding="2dp"
-                android:src="@drawable/green_square" />
+                android:text="31" />
 
-            <ImageButton
+
+            <Button
                 android:id="@+id/imageButton62"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginLeft="8dp"
+                android:background="@color/colorYellow"
                 android:padding="2dp"
-                android:src="@drawable/green_square" />
+                android:text="32" />
 
-            <ImageButton
+
+            <Button
                 android:id="@+id/imageButton63"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginLeft="8dp"
+                android:background="@color/colorYellow"
                 android:padding="2dp"
-                android:src="@drawable/green_square" />
+                android:text="33" />
 
-            <ImageButton
+
+            <Button
                 android:id="@+id/imageButton64"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginLeft="8dp"
+                android:background="@color/colorYellow"
                 android:padding="2dp"
-                android:src="@drawable/green_square" />
+                android:text="34" />
 
-            <ImageButton
+
+            <Button
                 android:id="@+id/imageButton65"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginLeft="8dp"
+                android:background="@color/colorYellow"
                 android:padding="2dp"
-                android:src="@drawable/green_square" />
+                android:text="35" />
 
-            <ImageButton
+
+            <Button
                 android:id="@+id/imageButton66"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginLeft="8dp"
+                android:background="@color/colorYellow"
                 android:padding="2dp"
-                android:src="@drawable/green_square" />
+                android:text="36" />
+
+
         </LinearLayout>
     </LinearLayout>
+
+    <Button
+        android:id="@+id/resetButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="64dp"
+        android:text="RESET" />
 
 </LinearLayout>

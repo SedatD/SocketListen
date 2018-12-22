@@ -1,13 +1,17 @@
 package smarteq.com.socketlisten;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.AppCompatDelegate;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
+import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -15,7 +19,6 @@ public class FixedVersionActivity extends AppCompatActivity implements OnTCPMess
 
     private final String TAG = "FixedVersionActivity";
 
-    private ArrayList<LinearLayout> layoutList = new ArrayList<>();
     private ArrayList<Koltuk> koltukList = new ArrayList<>();
     private Handler handler = new Handler();
 
@@ -26,7 +29,13 @@ public class FixedVersionActivity extends AppCompatActivity implements OnTCPMess
 
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
 
-        fillLayoutList();
+        findViewById(R.id.resetButton).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                resetView();
+                Toast.makeText(FixedVersionActivity.this, "Koltuklar resetlendi", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         fillKoltukList();
 
@@ -39,59 +48,52 @@ public class FixedVersionActivity extends AppCompatActivity implements OnTCPMess
         writer.init(8888);
     }
 
-    private void fillLayoutList() {
-        layoutList.add((LinearLayout) findViewById(R.id.layout1));
-        layoutList.add((LinearLayout) findViewById(R.id.layout2));
-        layoutList.add((LinearLayout) findViewById(R.id.layout3));
-        layoutList.add((LinearLayout) findViewById(R.id.layout4));
-        layoutList.add((LinearLayout) findViewById(R.id.layout5));
-        layoutList.add((LinearLayout) findViewById(R.id.layout6));
-    }
-
     private void fillKoltukList() {
         koltukList = new ArrayList<>();
 
-        koltukList.add(new Koltuk((ImageButton) findViewById(R.id.imageButton11), true, R.drawable.green_square, 11, 11));
-        koltukList.add(new Koltuk((ImageButton) findViewById(R.id.imageButton12), true, R.drawable.green_square, 12, 12));
-        koltukList.add(new Koltuk((ImageButton) findViewById(R.id.imageButton13), true, R.drawable.green_square, 13, 13));
-        koltukList.add(new Koltuk((ImageButton) findViewById(R.id.imageButton14), true, R.drawable.green_square, 14, 14));
-        koltukList.add(new Koltuk((ImageButton) findViewById(R.id.imageButton15), true, R.drawable.green_square, 15, 15));
-        koltukList.add(new Koltuk((ImageButton) findViewById(R.id.imageButton16), true, R.drawable.green_square, 16, 16));
+        koltukList.add(new Koltuk((Button) findViewById(R.id.imageButton11), true, 1, 1));
+        koltukList.add(new Koltuk((Button) findViewById(R.id.imageButton12), true, 2, 2));
+        koltukList.add(new Koltuk((Button) findViewById(R.id.imageButton13), true, 3, 3));
+        koltukList.add(new Koltuk((Button) findViewById(R.id.imageButton14), true, 4, 4));
+        koltukList.add(new Koltuk((Button) findViewById(R.id.imageButton15), true, 5, 5));
+        koltukList.add(new Koltuk((Button) findViewById(R.id.imageButton16), true, 6, 6));
 
-        koltukList.add(new Koltuk((ImageButton) findViewById(R.id.imageButton21), true, R.drawable.green_square, 21, 21));
-        koltukList.add(new Koltuk((ImageButton) findViewById(R.id.imageButton22), true, R.drawable.green_square, 22, 22));
-        koltukList.add(new Koltuk((ImageButton) findViewById(R.id.imageButton23), true, R.drawable.green_square, 23, 23));
-        koltukList.add(new Koltuk((ImageButton) findViewById(R.id.imageButton24), true, R.drawable.green_square, 24, 24));
-        koltukList.add(new Koltuk((ImageButton) findViewById(R.id.imageButton25), true, R.drawable.green_square, 25, 25));
-        koltukList.add(new Koltuk((ImageButton) findViewById(R.id.imageButton26), true, R.drawable.green_square, 26, 26));
+        koltukList.add(new Koltuk((Button) findViewById(R.id.imageButton21), true, 7, 7));
+        koltukList.add(new Koltuk((Button) findViewById(R.id.imageButton22), true, 8, 8));
+        koltukList.add(new Koltuk((Button) findViewById(R.id.imageButton23), true, 9, 9));
+        koltukList.add(new Koltuk((Button) findViewById(R.id.imageButton24), true, 10, 10));
+        koltukList.add(new Koltuk((Button) findViewById(R.id.imageButton25), true, 11, 11));
+        koltukList.add(new Koltuk((Button) findViewById(R.id.imageButton26), true, 12, 12));
 
-        koltukList.add(new Koltuk((ImageButton) findViewById(R.id.imageButton31), true, R.drawable.green_square, 31, 31));
-        koltukList.add(new Koltuk((ImageButton) findViewById(R.id.imageButton32), true, R.drawable.green_square, 32, 32));
-        koltukList.add(new Koltuk((ImageButton) findViewById(R.id.imageButton33), true, R.drawable.green_square, 33, 33));
-        koltukList.add(new Koltuk((ImageButton) findViewById(R.id.imageButton34), true, R.drawable.green_square, 34, 34));
-        koltukList.add(new Koltuk((ImageButton) findViewById(R.id.imageButton35), true, R.drawable.green_square, 35, 35));
-        koltukList.add(new Koltuk((ImageButton) findViewById(R.id.imageButton36), true, R.drawable.green_square, 36, 36));
+        koltukList.add(new Koltuk((Button) findViewById(R.id.imageButton31), true, 13, 13));
+        koltukList.add(new Koltuk((Button) findViewById(R.id.imageButton32), true, 14, 14));
+        koltukList.add(new Koltuk((Button) findViewById(R.id.imageButton33), true, 15, 15));
+        koltukList.add(new Koltuk((Button) findViewById(R.id.imageButton34), true, 16, 16));
+        koltukList.add(new Koltuk((Button) findViewById(R.id.imageButton35), true, 17, 17));
+        koltukList.add(new Koltuk((Button) findViewById(R.id.imageButton36), true, 18, 18));
 
-        koltukList.add(new Koltuk((ImageButton) findViewById(R.id.imageButton41), true, R.drawable.green_square, 41, 41));
-        koltukList.add(new Koltuk((ImageButton) findViewById(R.id.imageButton42), true, R.drawable.green_square, 42, 42));
-        koltukList.add(new Koltuk((ImageButton) findViewById(R.id.imageButton43), true, R.drawable.green_square, 43, 43));
-        koltukList.add(new Koltuk((ImageButton) findViewById(R.id.imageButton44), true, R.drawable.green_square, 44, 44));
-        koltukList.add(new Koltuk((ImageButton) findViewById(R.id.imageButton45), true, R.drawable.green_square, 45, 45));
-        koltukList.add(new Koltuk((ImageButton) findViewById(R.id.imageButton46), true, R.drawable.green_square, 46, 46));
+        koltukList.add(new Koltuk((Button) findViewById(R.id.imageButton41), true, 19, 19));
+        koltukList.add(new Koltuk((Button) findViewById(R.id.imageButton42), true, 20, 20));
+        koltukList.add(new Koltuk((Button) findViewById(R.id.imageButton43), true, 21, 21));
+        koltukList.add(new Koltuk((Button) findViewById(R.id.imageButton44), true, 22, 22));
+        koltukList.add(new Koltuk((Button) findViewById(R.id.imageButton45), true, 23, 23));
+        koltukList.add(new Koltuk((Button) findViewById(R.id.imageButton46), true, 24, 24));
 
-        koltukList.add(new Koltuk((ImageButton) findViewById(R.id.imageButton51), true, R.drawable.green_square, 51, 51));
-        koltukList.add(new Koltuk((ImageButton) findViewById(R.id.imageButton52), true, R.drawable.green_square, 52, 52));
-        koltukList.add(new Koltuk((ImageButton) findViewById(R.id.imageButton53), true, R.drawable.green_square, 53, 53));
-        koltukList.add(new Koltuk((ImageButton) findViewById(R.id.imageButton54), true, R.drawable.green_square, 54, 54));
-        koltukList.add(new Koltuk((ImageButton) findViewById(R.id.imageButton55), true, R.drawable.green_square, 55, 55));
-        koltukList.add(new Koltuk((ImageButton) findViewById(R.id.imageButton56), true, R.drawable.green_square, 56, 56));
+        koltukList.add(new Koltuk((Button) findViewById(R.id.imageButton51), true, 25, 25));
+        koltukList.add(new Koltuk((Button) findViewById(R.id.imageButton52), true, 26, 26));
+        koltukList.add(new Koltuk((Button) findViewById(R.id.imageButton53), true, 27, 27));
+        koltukList.add(new Koltuk((Button) findViewById(R.id.imageButton54), true, 28, 28));
+        koltukList.add(new Koltuk((Button) findViewById(R.id.imageButton55), true, 29, 29));
+        koltukList.add(new Koltuk((Button) findViewById(R.id.imageButton56), true, 30, 30));
 
-        koltukList.add(new Koltuk((ImageButton) findViewById(R.id.imageButton61), true, R.drawable.green_square, 61, 61));
-        koltukList.add(new Koltuk((ImageButton) findViewById(R.id.imageButton62), true, R.drawable.green_square, 62, 62));
-        koltukList.add(new Koltuk((ImageButton) findViewById(R.id.imageButton63), true, R.drawable.green_square, 63, 63));
-        koltukList.add(new Koltuk((ImageButton) findViewById(R.id.imageButton64), true, R.drawable.green_square, 64, 64));
-        koltukList.add(new Koltuk((ImageButton) findViewById(R.id.imageButton65), true, R.drawable.green_square, 65, 65));
-        koltukList.add(new Koltuk((ImageButton) findViewById(R.id.imageButton66), true, R.drawable.green_square, 66, 66));
+        koltukList.add(new Koltuk((Button) findViewById(R.id.imageButton61), true, 31, 31));
+        koltukList.add(new Koltuk((Button) findViewById(R.id.imageButton62), true, 32, 32));
+        koltukList.add(new Koltuk((Button) findViewById(R.id.imageButton63), true, 33, 33));
+        koltukList.add(new Koltuk((Button) findViewById(R.id.imageButton64), true, 34, 34));
+        koltukList.add(new Koltuk((Button) findViewById(R.id.imageButton65), true, 35, 35));
+        koltukList.add(new Koltuk((Button) findViewById(R.id.imageButton66), true, 36, 36));
+
+        renderKoltuk();
     }
 
     private void initClicksForKoltuk() {
@@ -206,96 +208,164 @@ public class FixedVersionActivity extends AppCompatActivity implements OnTCPMess
         String byteData = hamData.split(" ")[3];
         byteData = byteData.replaceAll("\\.", "");
 
-        int totalKoltuk = 0;
-        if (!((devNumber - 1) * 6 <= totalKoltuk))
-            return;
-
-        ArrayList<ImageView> imageViewList = new ArrayList<>();
-        for (int j = 0; j < layoutList.size(); j++) {
-            for (int i = 0; i < layoutList.get(j).getChildCount(); i++) {
-                imageViewList.add((ImageView) layoutList.get(j).getChildAt(i));
-            }
+        ArrayList<Koltuk> koltukListActiveOnly = new ArrayList<>();
+        for (int i = 0; i < koltukList.size(); i++) {
+            if (koltukList.get(i).getStatus())
+                koltukListActiveOnly.add(koltukList.get(i));
         }
 
         int j = startPoint;
         for (int i = 0; i < byteData.length(); i++) {
             String oneDigit = byteData.substring(i, i + 1);
-            if (j == imageViewList.size())
+            if (j == koltukListActiveOnly.size())
                 break;
             if (oneDigit.equals("1")) {
-                imageViewList.get(j).setImageResource(R.drawable.green_square);
+                changeKoltukRenk(koltukListActiveOnly.get(j), getResources().getColor(R.color.colorGreen));
             } else {
-                imageViewList.get(j).setImageResource(R.drawable.red_square);
+                changeKoltukRenk(koltukListActiveOnly.get(j), getResources().getColor(R.color.colorRed));
             }
             j++;
         }
 
     }
 
-    private void changeKoltukStatus(Koltuk koltuk) {
-        for (int i = 0; i < koltukList.size(); i++) {
-            if (koltukList.get(i).getImageButton().getId() == koltuk.getImageButton().getId()) {
-                koltukList.get(i).setStatus(!koltukList.get(i).isStatus());
+    private void changeKoltukStatus(View view) {
+        for (int i = 0; i < koltukList.size(); i++)
+            if (koltukList.get(i).getButton().getId() == view.getId()) {
+                koltukList.get(i).setStatus(!koltukList.get(i).getStatus());
+                int renk = koltukList.get(i).getStatus() ? getResources().getColor(R.color.colorYellow) : getResources().getColor(R.color.colorGray);
+                changeKoltukRenk(koltukList.get(i), renk);
                 break;
             }
-        }
     }
 
     private void changeKoltukRenk(Koltuk koltuk, int renk) {
-        for (int i = 0; i < koltukList.size(); i++) {
-            if (koltukList.get(i).getImageButton().getId() == koltuk.getImageButton().getId()) {
-                koltukList.get(i).setRenk(renk);
+        for (int i = 0; i < koltukList.size(); i++)
+            if (koltukList.get(i).getButton().getId() == koltuk.getButton().getId()) {
+                koltukList.get(i).getButton().setBackgroundColor(renk);
                 break;
             }
-        }
     }
 
-    private void swapKoltuk(Koltuk koltuk, int swapIndex) {
-        for (int i = 0; i < koltukList.size(); i++) {
-            if (koltukList.get(i).getCurrentIndex() == swapIndex) {
-                koltukList.get(i).setCurrentIndex(koltuk.getCurrentIndex());
+    private void changeKoltukText(Koltuk koltuk, String text) {
+        for (int i = 0; i < koltukList.size(); i++)
+            if (koltukList.get(i).getButton().getId() == koltuk.getButton().getId()) {
+                koltukList.get(i).getButton().setText(text);
+                break;
             }
-        }
-        for (int i = 0; i < koltukList.size(); i++) {
-            if (koltukList.get(i).getImageButton().getId() == koltuk.getImageButton().getId()) {
+    }
+
+    private void swapKoltuk(View view, int swapIndex) {
+        int temp = -1;
+
+        for (int i = 0; i < koltukList.size(); i++)
+            if (koltukList.get(i).getButton().getId() == view.getId())
+                temp = koltukList.get(i).getCurrentIndex();
+
+        for (int i = 0; i < koltukList.size(); i++)
+            if (koltukList.get(i).getCurrentIndex() == swapIndex)
+                if (temp != -1)
+                    if (!koltukList.get(i).getStatus()) {
+                        Toast.makeText(FixedVersionActivity.this, "Pasif koltukla yer değiştirilemez", Toast.LENGTH_SHORT).show();
+                        return;
+                    } else {
+                        koltukList.get(i).setCurrentIndex(temp);
+                        koltukList.get(i).getButton().setText(temp + "");
+                    }
+
+        for (int i = 0; i < koltukList.size(); i++)
+            if (koltukList.get(i).getButton().getId() == view.getId()) {
                 koltukList.get(i).setCurrentIndex(swapIndex);
+                koltukList.get(i).getButton().setText(swapIndex + "");
             }
-        }
+
     }
 
     private void resetView() {
         fillKoltukList();
     }
 
-    // TODO silinecek
-    private void dynamicSquares(LinearLayout linLay, int koltukAdet) {
-        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(136, 136);
-        layoutParams.setMargins(8, 0, 0, 0);
-
-        linLay.removeAllViews();
-
-        for (int i = 0; i < koltukAdet; i++) {
-            ImageView imageView = new ImageView(this);
-            imageView.setPadding(2, 2, 2, 2);
-            imageView.setLayoutParams(layoutParams);
-            imageView.setImageResource(R.drawable.red_square);
-            linLay.addView(imageView);
+    private void renderKoltuk() {
+        for (int i = 0; i < koltukList.size(); i++) {
+            changeKoltukRenk(koltukList.get(i), getResources().getColor(R.color.colorYellow));
+            changeKoltukText(koltukList.get(i), koltukList.get(i).getBaseIndex() + "");
         }
-        linLay.requestLayout();
     }
 
     @Override
-    public void onClick(View view) {
-        // TODO modal acılacak swap etmek istedigi index alıncak ve
-        // swapKoltuk(koltuk,swapIndex);
+    public void onClick(final View view) {
+
+        for (int i = 0; i < koltukList.size(); i++)
+            if (koltukList.get(i).getButton().getId() == view.getId())
+                if (!koltukList.get(i).getStatus()) {
+                    Toast.makeText(FixedVersionActivity.this, "Pasif koltuk değiştirilemez", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+        LayoutInflater layoutInflater = LayoutInflater.from(FixedVersionActivity.this);
+        View dialogView = layoutInflater.inflate(R.layout.dialog, null);
+
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(FixedVersionActivity.this);
+        alertDialogBuilder.setView(dialogView);
+
+        Spinner spinnerSwap = (Spinner) dialogView.findViewById(R.id.spinnerSwap);
+        final int[] swapliIndex = {0};
+
+        spinnerSwap.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                swapliIndex[0] = i;
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                swapliIndex[0] = -1;
+            }
+        });
+
+        alertDialogBuilder.setCancelable(true)
+                .setPositiveButton("TAMAM",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                if (swapliIndex[0] == 0)
+                                    Toast.makeText(FixedVersionActivity.this, "Bir koltuk seçin", Toast.LENGTH_SHORT).show();
+                                else
+                                    swapKoltuk(view, swapliIndex[0]);
+                            }
+                        })
+                .setNegativeButton("İPTAL",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
     }
 
     @Override
-    public boolean onLongClick(View view) {
-        // TODO neden returnu var ornegıne bakılacak
-        // TODO modal acılacak ve
-        // changeKoltukStatus(koltuk);
-        return false;
+    public boolean onLongClick(final View view) {
+        AlertDialog alertDialog = new AlertDialog.Builder(FixedVersionActivity.this).create();
+        alertDialog.setTitle("Seçtiğiniz koltuğun durumu değiştirilecektir");
+        // alertDialog.setMessage("this is my app");
+
+        alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "TAMAM", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                changeKoltukStatus(view);
+                dialog.dismiss();
+            }
+        });
+
+        alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "İPTAL", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+
+        alertDialog.show();
+
+        return true;
     }
 
 }
